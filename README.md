@@ -14,7 +14,7 @@ rm -rf ./node_modules/.vite
 
 then
 ```
-git clone https://github.com/comidev-france/svelte-patcher && ./svelte-patcher/svelte-patcher.c 
+git submodule add https://github.com/comidev-france/svelte-patcher && ./svelte-patcher/svelte-patcher.c 
 
 ```
 
