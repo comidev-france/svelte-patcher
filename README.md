@@ -7,6 +7,9 @@ Solves svelte detach `node.parentNode is null` issue when user changes too quick
 ```
 
 
+before we start, `cd path/to/your_npm_app`
+
+
 if you are using vite, don't forget to delte vite cache
 ```
 rm -rf ./node_modules/.vite
@@ -14,7 +17,7 @@ rm -rf ./node_modules/.vite
 
 then
 ```
-git clone https://github.com/comidev-france/svelte-patcher && ./svelte-patcher/svelte-patcher.c 
+git submodule add https://github.com/comidev-france/svelte-patcher && ./svelte-patcher/svelte-patcher.c 
 
 ```
 
@@ -30,8 +33,13 @@ finally you can add the following postinstall script in your `package.json` :
 
 ```
 {
-  "scripts": {
-      "postinstall" : "./svelte-patcher/svelte-patcher.c"
+...
+    "scripts": {
+        ...
+        "postinstall" : "./svelte-patcher/svelte-patcher.c"
+        ...
+    }
+...
 }
 ```
 
