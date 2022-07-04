@@ -18,4 +18,11 @@ git clone https://github.com/comidev-france/svelte-patcher && ./svelte-patcher/s
 
 ```
 
+should output:
+```
+svelte patcher v0.1
+patching ./node_modules/svelte/internal/index.js...
+patching ./node_modules/svelte/internal/index.mjs...
+patch applied successfully
+```
 
