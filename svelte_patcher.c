@@ -57,6 +57,7 @@ int patch_once(const char *file_path, const char *old, size_t old_len, const cha
    if (fsize <= 0 || str == 0 || (ri = read(fd, str, fsize)) < old_len && ri < 0)
         return !!printf("[svelte_patcher line=%i] Unable to alloc or read(%i, %p, %zi) %zi %p\n", __LINE__, fd, str_p, fsize, ri, str_p)
             && illiad(str_p);
+   str[fsize] = 0;
    close(fd);
    fd = open(file_path, O_WRONLY | O_TRUNC) ;
    if (fd < 0)
