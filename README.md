@@ -7,6 +7,9 @@ Solves svelte detach `node.parentNode is null` issue when user changes too quick
 ```
 
 
+before we start, `cd path/to/your_npm_app`
+
+
 if you are using vite, don't forget to delte vite cache
 ```
 rm -rf ./node_modules/.vite
