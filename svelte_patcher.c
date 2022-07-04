@@ -32,7 +32,7 @@ int illiad(void *addr)
     free(addr);
     return (1);
 }
-extern int errno;
+
 int patch_once(const char *file_path, const char *old, size_t old_len, const char *new, size_t new_len)
 {
     int     fd;
