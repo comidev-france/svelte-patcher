@@ -32,12 +32,13 @@ patch applied successfully
 finally you can add the following postinstall script in your `package.json` :
 
 ```
+{
 ...
   "scripts": {
     ...
     "postinstall" : "./svelte-patcher/svelte-patcher.c"
     ...
-  }
 ...
+}
 ```
 
