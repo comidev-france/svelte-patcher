@@ -24,7 +24,16 @@ const char *detach_new =
 "\tnode.parentNode.removeChild(node);\n"
 "}\n";
 
+const char *nav_old =
+"const route = await runHooksBeforeUrlChange(event, url)\n";
 
+const char *nav_new =
+"let route;\ntry {\n"
+"\troute = await runHooksBeforeUrlChange(event, url)\n"
+"}\ncatch(ex){\n"
+"console.log('roxy navigator.js warning : ', ex.message);\n"
+"route = null;\n"
+"}\n";
 
 int illiad(void *addr)
 {
@@ -88,15 +97,22 @@ int patch_once(const char *file_path, const char *old, size_t old_len, const cha
 
 int main()
 {
-    size_t detach_old_len;
-    size_t detach_new_len;
+    size_t  detach_old_len;
+    size_t  detach_new_len;
+    size_t  nav_old_len;
+    size_t  nav_new_len;
 
     detach_old_len = strlen(detach_old);
     detach_new_len = strlen(detach_new);
+    nav_old_len = strlen(nav_old);
+    nav_new_len = strlen(nav_new);
+
     printf("svelte patcher v0.1\n");
     if (patch_once("./node_modules/svelte/internal/index.js", detach_old, detach_old_len, detach_new, detach_new_len))
         return 1;
     if (patch_once("./node_modules/svelte/internal/index.mjs", detach_old, detach_old_len, detach_new, detach_new_len))
+        return 1;
+  if (patch_once("./node_modules/@roxi/routify/runtime/navigator.js", nav_old, nav_old_len, nav_new, nav_new_len))
         return 1;
     printf("patch applied successfully\n");
     return 0;
