@@ -32,9 +32,8 @@ const char *nav_new =
 "\troute = await runHooksBeforeUrlChange(event, url)\n"
 "}\ncatch(ex){\n"
 "console.log('roxy navigator.js warning : ', ex.message);\n"
-"console.log('route : ', route);\n"
+"console.log('url : ', url);\n"
 "route = url;"
-//"route = null;\n"
 "}\n";
 
 int illiad(void *addr)
